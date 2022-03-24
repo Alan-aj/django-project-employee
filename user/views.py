@@ -24,16 +24,26 @@ def login(request):
         psw=request.POST['password']
         
         try:
-            obj_exist=signup.objects.get(username=uname, password=psw)
-            request.session['user']=obj_exist.signid
-            return redirect("employee_home")
+            if uname=='alan':
+                obj_exist=signup.objects.get(username=uname, password=psw)
+                request.session['user']=obj_exist.signid
+                return redirect("admin_home")
+            else:
+                obj_exist=signup.objects.get(username=uname, password=psw)
+                request.session['user']=obj_exist.signid
+                return redirect("employee_home")
 
         except signup.DoesNotExist:
             msg="Username or password incorrect"
     return render(request,'login.html',{'msg':msg,})
 
 def admin(request):
-    return render(request,'admin.html')
+    data=signup.objects.all()
+    if request.method=='POST':
+        id=request.POST['id']
+        obj=signup.objects.filter(signid=id)
+        obj.delete()
+    return render(request,'admin.html',{'user':data})
 
 def employee(request):
     obj=signup.objects.get(signid=request.session['user'])
