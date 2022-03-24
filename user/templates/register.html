@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        h3 {
+            width:500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        table{
+            width:500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        th{
+            text-align: left;
+        }
+        td{
+            text-align: left;
+        }
+
+    </style>
+  </head>
+  <body align="center">
+    <form method="post" action="" onsubmit="return check()">
+      {% csrf_token %}
+      <h3>Register New Account</h3><br><br>
+        <table>
+            <tr>
+                <th>
+                    <label>Name</label>
+                </th> 
+                <td><input type="text" id="name" name="name" class="form-control"></td> 
+                <td><span id="sname"></span></td>  
+            </tr>
+            <tr>
+                <th>
+                    <label>Place</label>
+                </th>  
+                <td><input type="text" id="place" name="place" class="form-control"></td> 
+                <td><span id="sage"></span></td>  
+            </tr>
+            <tr>
+                <th>
+                    <label>Email</label></th> 
+                    <td>
+                    <input type="email" id="email" name="email" class="form-control">
+                </td>
+                <td><span id="semail"></span></td> 
+            </tr>
+            <tr>
+                <th>
+                    <label>Address</label>
+                </th>
+                <td>
+                    <textarea class="form-control" id="address" name="address"></textarea>
+                </td>
+                <td><span id="scontact"></span></td>
+            </tr>
+            <tr>
+                <th>
+                    <label>Username</label>
+                </th> 
+                <td><input type="text" id="uname" name="username" class="form-control"></td> 
+                <td><span id="suname"></span></td>  
+            </tr>
+            <tr>
+                <th>
+                    <label>Password</label></th> 
+                    <td>
+                    <input type="password" id="pass" name="pwd" class="form-control">
+                </td>
+                <td><span id="spass"></span></td> 
+            </tr>
+            <tr>
+                <th>
+                    <label>Confirm Password</label></th>
+                    <td>
+                    <input type="password" id="cpass" class="form-control">
+                </td>
+                <td><span id="scpass"></span></td> 
+            </tr>
+            <tr>
+                <th></th>
+                <td id="btn" align="left" colspan="2">
+                    <input type="submit" value="Register"  id="btn">
+                </td>
+            </tr>
+        </table><br>
+      
+    </form>
+    <script>
+        function check(){
+            var txt=document.getElementById('name')
+            if(txt.value=="") {
+                document.getElementById("sname").innerHTML="Enter Your name"
+                return false
+            }
+            else{
+                document.getElementById("sname").innerHTML=""
+            }
+    
+            var age=document.getElementById('place')
+            if(age.value=="") {
+                document.getElementById("sage").innerHTML="Enter Your place"
+                return false
+            }
+            else{
+                document.getElementById("sage").innerHTML=""
+            }
+    
+            var email=document.getElementById('email')
+            if(email.value=="") {
+                document.getElementById("semail").innerHTML="Enter Your email"
+                return false
+            }
+            else{
+                document.getElementById("semail").innerHTML=""
+            }
+    
+            var contact=document.getElementById('address')
+            if(contact.value=="") {
+                document.getElementById("scontact").innerHTML="Enter Your address"
+                return false
+            }
+            else{
+                document.getElementById("scontact").innerHTML=""
+            }
+            var txt1=document.getElementById('uname')
+            if(txt1.value=="") {
+                document.getElementById("suname").innerHTML="Enter Your username"
+                return false
+            }
+            else{
+                document.getElementById("suname").innerHTML=""
+            }
+    
+            var pass=document.getElementById('pass')
+            if(pass.value=="") {
+                document.getElementById("spass").innerHTML="Enter Your password"
+                return false
+            }
+            else{
+                document.getElementById("spass").innerHTML=""
+            }
+    
+            var cpass=document.getElementById('cpass')
+            if(cpass.value=="") {
+                document.getElementById("scpass").innerHTML="Incorrect password"
+                return false
+            }
+            else{
+                document.getElementById("scpass").innerHTML=""
+            }
+            var pass=document.getElementById('pass')
+            if(cpass.value!=pass.value){
+                document.getElementById("scpass").innerHTML="Incorrect password"
+                return false
+            }
+            else{
+                document.getElementById("scpass").innerHTML=""
+            }
+    
+            // var email=document.getElementById('email')
+            // if(email.value=="") {
+            //     document.getElementById("semail").innerHTML="Enter Your email"
+            //     return false
+            // }
+            // else{
+            //     document.getElementById("semail").innerHTML=""
+            // }
+    
+            $(document).ready(function() {
+                $("#p").css("background-color", "red");
+            });
+    
+        }
+    
+    </script>
+  </body>
+  
+</html>

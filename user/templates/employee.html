@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3 {
+            width:500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        table{
+            width:500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        th{
+            text-align: left;
+        }
+        td{
+            text-align: left;
+        }
+
+    </style>
+</head>
+<body align="center">
+   <h1>Employee Home</h1>
+    <form action="/logout">
+        {% csrf_token %}
+        <button>Logout</button>
+    </form>
+<br><br>
+    <form method="post" action="">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <th>Name</th>
+          <td>: <input type="text" name="name" id="txt" value="{{user.name}}" /></td>
+        </tr>
+        <tr>
+            <th>Place</th>
+            <td>: <input type="text" name="name" id="txt" value="{{user.place}}" /></td>
+          </tr>
+        <tr>
+          <th>Email</th>
+          <td>: <input type="email" id="mail" name="email" value="{{user.email}}"/></td>
+        </tr>
+        <tr>
+          <th>Address</th>
+          <td>: <input type="text" name="pwd" id="pwd" value="{{user.address}}"/></td>
+        </tr>
+        
+      </table>
+    </form>
+<br>
+<a href="update/{{i.signid}}">Update Profile</a>
+</body>
+</html>
+
